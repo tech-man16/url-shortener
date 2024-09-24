@@ -81,7 +81,6 @@ export default function Home() {
             </button>
           </div>
   
-  
           {!dummyUrl.includes("Loading") && dummyUrl.length != 0 ?
             <a
               href={`${path.join(process.cwd(), `/getUrl?v=${dummyUrl}`)}`}
