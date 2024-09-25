@@ -20,7 +20,7 @@ async function connect() {
 
 async function disconnect() {
   if (!client) {
-    const z = await client.close();
+    await client.close();
     console.log("Disconnected successfully !!")
   }
 }
