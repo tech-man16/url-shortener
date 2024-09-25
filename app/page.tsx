@@ -47,9 +47,15 @@ export default function Home() {
   const submit = () => {
     setDisabled(true);
     if (url !== "") {
-      setDummyUrl("Loading...");
-      router.push(`/a?v=${url}`);
-      setUrl("")
+      if (url.split(".").length != 3) {
+        alert("Invalid url");
+        setDisabled(false);
+      }
+      else {
+        setDummyUrl("Loading...");
+        router.push(`/a?v=${url}`);
+        setUrl("")
+      }
     }
     else {
       alert("No link Recieved !!");
@@ -83,16 +89,18 @@ export default function Home() {
                 {!isDisabled ? "Generate URL" : <Loader />}
               </span>
             </button>
-
           </div>
           {
             !dummyUrl.includes("Loading") && dummyUrl.length != 0 ?
-              <a
-                href={`${window.location.origin}/${dummyUrl}`}
-                className="mt-4 bg-gradient-to-r from-pink-500 to-lime-500 inline-block text-transparent bg-clip-text text-2xl font-extrabold"
-              >
-                {`${window.location.origin}/${dummyUrl}`}
-              </a > :
+              <div className="flex flex-col gap-4">
+                <a href={`${window.location.origin}/${dummyUrl}`}
+                  className="mt-4 bg-gradient-to-r from-pink-500 to-lime-500 inline-block text-transparent bg-clip-text text-2xl font-extrabold"
+                >
+                  {`${window.location.origin}/${dummyUrl}`}
+                </a >
+
+                <span className="mt-4 bg-gradient-to-r from-blue-500 via-purple-500 to-white flex flex-row-reverse text-transparent bg-clip-text text-sm font-extrabold"> Valid for 10 seconds </span>
+              </div> :
               <span> {dummyUrl} </span>
           }
         </div >
