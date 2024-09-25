@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import confetti from "canvas-confetti";
 import { Loader } from "@/components/loader";
-import { styles } from "@/site/styles";
+import { myStyles } from "@/site/styles";
 // https://www.leetcode.com 
 
 export const fetchCache = "force-no-store";
@@ -60,7 +60,7 @@ export default function Home() {
     <Suspense>
       <div className="flex flex-col h-screen">
         <nav className="flex">
-          <button className={styles.logoStyle} onClick={() => window.location.reload()}> URL Shortener Tool </button> {/* logoStyle*/}
+          <button className={myStyles.logoStyle} onClick={() => window.location.reload()}> URL Shortener Tool </button> {/* logoStyle*/}
         </nav>
         <div className="flex flex-1 flex-col justify-center items-center gap-2">
           <div className="flex gap-2">
@@ -68,18 +68,20 @@ export default function Home() {
               aria-label="Enter Url"
               placeholder="Enter Url..."
               //className="w-[250px] text-white outline-none border-4 bg-slate-400  border-purple-600 rounded-full hover:bg-slate-400/85 focus:pl-2 focus:tracking-widest focus:bg-slate-400/80"
-              className={styles.inputStyle}
+              className={`${myStyles.inputStyle}`}
               onChange={(e: any) => { e.preventDefault(); setUrl(e.target.value) }}
+              autoComplete="off"
             />
             <button
               disabled={isDisabled}
-              className={!isDisabled ? styles.buttonStyle : styles.disablesButtonStyle}
+              className={!isDisabled ? myStyles.buttonStyle : myStyles.disablesButtonStyle}
               onClick={submit}
             >
               <span className="relative px-10 py-3 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-base h-full">
                 {!isDisabled ? "Generate URL" : <Loader />}
               </span>
             </button>
+
           </div>
           {
             !dummyUrl.includes("Loading") && dummyUrl.length != 0 ?
