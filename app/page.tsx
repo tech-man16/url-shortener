@@ -59,8 +59,13 @@ export default function Home() {
         </nav>
         <div className="flex flex-1 flex-col justify-center items-center gap-2">
           <div className="flex gap-2">
+<<<<<<< HEAD
 
 
+=======
+  
+  
+>>>>>>> a2aa957f569826f4be151b2ee44a24961433754c
             <input type="text" value={url} id="url" name="url"
               aria-label="Enter Url"
               placeholder="Enter Url..."
@@ -68,9 +73,15 @@ export default function Home() {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 tracking-[0.25rem] block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={(e: any) => { e.preventDefault(); setUrl(e.target.value) }}
             />
+<<<<<<< HEAD
 
 
 
+=======
+  
+  
+  
+>>>>>>> a2aa957f569826f4be151b2ee44a24961433754c
             <button
               className="relative inline-flex items-stretch justify-center p-0.5 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
               onClick={submit}
@@ -80,14 +91,19 @@ export default function Home() {
               </span>
             </button>
           </div>
+<<<<<<< HEAD
 
 
+=======
+  
+>>>>>>> a2aa957f569826f4be151b2ee44a24961433754c
           {!dummyUrl.includes("Loading") && dummyUrl.length != 0 ?
             <a
               href={`${path.join(process.cwd(), `/getUrl?v=${dummyUrl}`)}`}
               className="mt-4 bg-gradient-to-r from-blue-500 to-lime-500 inline-block text-transparent bg-clip-text"
             >
               {`${window.location.origin}/getUrl?v=${dummyUrl}`}
+<<<<<<< HEAD
 
             </a> :
             <span> {dummyUrl} </span>
@@ -97,5 +113,17 @@ export default function Home() {
         </div>
       </div>
     </Suspense>
+=======
+  
+            </a> :
+            <span> {dummyUrl} </span>
+          }
+  
+  
+        </div>
+      </div>
+
+      </Suspense>
+>>>>>>> a2aa957f569826f4be151b2ee44a24961433754c
   );
 }
