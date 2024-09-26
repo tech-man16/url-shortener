@@ -44,6 +44,18 @@ export default function Home() {
     });
   };
 
+  const copyToClipboard = async () => {
+    try {
+      if (dummyUrl.length != 0)
+        await navigator.clipboard.writeText(`${window.location.origin}/${dummyUrl}`), alert("Copied to clipboard !!");
+      else
+        alert("Not a valid url !!");
+
+    } catch (e) {
+      alert("Copy failed..");
+    }
+  }
+
   const submit = () => {
     setDisabled(true);
     if (url !== "") {
@@ -69,7 +81,32 @@ export default function Home() {
         <nav className="flex">
           <button className={"text-2xl p-10 bg-gradient-to-r from-blue-500 to-orange-500 inline-block text-transparent bg-clip-text drop-shadow-2xl"} onClick={() => { setDummyUrl(""), window.location.reload() }}> URL Shortener Tool </button>
         </nav>
-        <div className="flex flex-1 flex-col justify-center items-center gap-2">
+        <div className="flex flex-col mr-16 gap-2">
+          <p
+            className="mr-40 flex flex-row-reverse bg-gradient-to-br from-pink-900 via-slate-400 to-yellow-500 text-transparent bg-clip-text text-2xl">
+            Accepted Urls:
+          </p>
+          <div className="flex flex-row-reverse gap-2">
+            <div className="flex flex-col bg-gradient-to-r from-pink-300 via-white to-orange-500 text-transparent bg-clip-text">
+              <span className="flex text-base py-1"> www.example.com </span>
+              <span className="flex text-base" >https://www.example.com   </span>
+              <span className="flex text-base ">   example.com</span>
+            </div>
+            <div className="flex flex-col">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.5" className="size-7 fill-green-700 stroke-slate-300">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.5" className="size-7 fill-green-700 stroke-slate-300">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.5" className="size-7 stroke-white fill-red-500">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 5.5 5.8m0-5.8-5.5 5.5M22 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </div>
+
+          </div>
+        </div>
+        <div className="flex flex-1 flex-col items-center gap-4 pt-20">
           <div className="flex gap-2">
             <input type="text" value={url} id="url" name="url"
               aria-label="Enter Url"
@@ -93,12 +130,13 @@ export default function Home() {
           {
             !dummyUrl.includes("Loading") && dummyUrl.length != 0 ?
               <div className="flex flex-col gap-4">
-                <a href={`${window.location.origin}/${dummyUrl}`}
-                  className="mt-4 bg-gradient-to-r from-pink-500 to-lime-500 inline-block text-transparent bg-clip-text text-2xl font-extrabold"
-                >
-                  {`${window.location.origin}/${dummyUrl}`}
-                </a >
-
+                <div className="flex gap-2 justify-between">
+                  <a href={`${window.location.origin}/${dummyUrl}`}
+                    className="flex justify-center items-center bg-gradient-to-r from-pink-500 to-lime-500 text-transparent bg-clip-text text-xl font-extrabold"
+                  > {`${window.location.origin}/${dummyUrl}`}
+                  </a >
+                  <button className="w-32 h-12 relative inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 via-blue-400 to-pink-500 hover:from-purple-500/85 hover:via-blue-400/85 hover:to-pink-500/85 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800" onClick={copyToClipboard}>   Copy  </button>
+                </div>
                 <span className="mt-4 bg-gradient-to-r from-blue-500 via-purple-500 to-white flex flex-row-reverse text-transparent bg-clip-text text-sm font-extrabold"> Valid for 10 seconds </span>
               </div> :
               <span> {dummyUrl} </span>

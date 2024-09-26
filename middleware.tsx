@@ -7,7 +7,7 @@ export async function middleware(request: NextRequest) {
     if (request.nextUrl.pathname.startsWith("/a")) {
         const url = request.nextUrl;
         const pathname = url.origin + "/getUrl";
-        const orig_url: string = url.searchParams.get("v") || ""; 
+        const orig_url: string = url.searchParams.get("v") || "";
         // const req = await fetch(url.origin + "/getUrl", {
         //     method: "POST",
         //     body: JSON.stringify({ url: url.searchParams.get("v") })
@@ -32,6 +32,6 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: "/a"
+    matcher: ["/a"]
 }
 

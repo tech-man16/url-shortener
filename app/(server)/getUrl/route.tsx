@@ -4,24 +4,24 @@ import { connect } from "../db/connection";
 
 import { NextResponse } from "next/server";
 
-export async function GET(req: any) {
-    try {
-    const db = await connect();
-    const collection = await db.collection("urls");
+// export async function GET(req: any) {
+//     try {
+//     const db = await connect();
+//     const collection = await db.collection("urls");
 
-    const stringUrl = req.url;
-    const dummyUrl: string = new URL(stringUrl).searchParams.get("v") || "";
+//     const stringUrl = req.url;
+//     const dummyUrl: string = new URL(stringUrl).searchParams.get("v") || "";
 
-    const data = await collection.findOne({ short_url: dummyUrl });
+//     const data = await collection.findOne({ short_url: dummyUrl });
 
-    if (data != undefined)
-        return NextResponse.redirect(data["orig_url"]);
-    else
-        return NextResponse.json({ message: "Url not found" , status:500}, { status: 500 })
-    } catch(e) {
-        return NextResponse.json({ message: "Internal Server Error", status:500}, { status: 500 })
-    }
-}
+//     if (data != undefined)
+//         return NextResponse.redirect(data["orig_url"]);
+//     else
+//         return NextResponse.json({ message: "Url not found" , status:500}, { status: 500 })
+//     } catch(e) {
+//         return NextResponse.json({ message: "Internal Server Error", status:500}, { status: 500 })
+//     }
+// }
 
 export async function POST(req: Request, res: any) {
     try {
