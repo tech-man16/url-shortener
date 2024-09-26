@@ -24,7 +24,6 @@ export default function Home() {
     setDummyUrl("");
     router.push("/");
     setDisabled(false);
-
   }, []);
 
   useEffect(() => {
@@ -50,7 +49,6 @@ export default function Home() {
         await navigator.clipboard.writeText(`${window.location.origin}/${dummyUrl}`), alert("Copied to clipboard !!");
       else
         alert("Not a valid url !!");
-
     } catch (e) {
       alert("Copy failed..");
     }
@@ -59,7 +57,7 @@ export default function Home() {
   const submit = () => {
     setDisabled(true);
     if (url !== "") {
-      if (url.split(".").length != 3) {
+      if (url.split(".").length != 3 || url.startsWith(".") || url.includes(" ")) {
         alert("Invalid url");
         setDisabled(false);
       }
@@ -83,7 +81,7 @@ export default function Home() {
         </nav>
         <div className="flex flex-col mr-16 gap-2">
           <p
-            className="mr-40 flex flex-row-reverse bg-gradient-to-br from-pink-900 via-slate-400 to-yellow-500 text-transparent bg-clip-text text-2xl">
+            className="text-lg sm:mr-40 flex ml-10 sm:flex-row-reverse bg-gradient-to-br from-pink-900 via-slate-400 to-yellow-500 text-transparent bg-clip-text sm:text-2xl">
             Accepted Urls:
           </p>
           <div className="flex flex-row-reverse gap-2">
@@ -99,19 +97,19 @@ export default function Home() {
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.5" className="size-7 fill-green-700 stroke-slate-300">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.5" className="size-7 stroke-white fill-red-500">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.8" className="size-7 stroke-slate-300 fill-red-500">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 5.5 5.8m0-5.8-5.5 5.5M22 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
             </div>
 
           </div>
         </div>
-        <div className="flex flex-1 flex-col items-center gap-4 pt-20">
-          <div className="flex gap-2">
+        <div className="flex flex-1 flex-col items-center gap-4 pt-20 ">
+          <div className="flex gap-2 flex-col sm:flex-row">
             <input type="text" value={url} id="url" name="url"
               aria-label="Enter Url"
               placeholder="Enter Url..."
-              className={"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 tracking-[0.25rem] block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"}
+              className={"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 tracking-[0.25rem] block w-80 sm:w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:outline-4 dark:focus:outline-yellow-500"}
               onChange={(e: any) => { e.preventDefault(); setUrl(e.target.value) }}
               autoComplete="off"
             />
@@ -122,7 +120,7 @@ export default function Home() {
                 "relative inline-flex items-stretch justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-r from-purple-500 to-pink-500"}
               onClick={submit}
             >
-              <span className="relative px-10 py-3 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-base h-full">
+              <span className="relative px-10 py-3 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-base h-full w-full">
                 {!isDisabled ? "Generate URL" : <Loader />}
               </span>
             </button>
