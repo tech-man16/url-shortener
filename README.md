@@ -1,4 +1,4 @@
-Live Demo: https://url-shortener-ten-zeta.vercel.app/
+Live Demo: https://url-shortener-psi-green.vercel.app/
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
