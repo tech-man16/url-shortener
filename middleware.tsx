@@ -25,7 +25,7 @@ export async function middleware(request: NextRequest) {
             return NextResponse.redirect(new URL("/", request.url));
         }
     } catch (e) {
-        return NextResponse.redirect("/");
+        return NextResponse.redirect(new URL("/"));
     }
     //return NextResponse.redirect(new URL(`/getUrl?v=${request.url}`));
 }
