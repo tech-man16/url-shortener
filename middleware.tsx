@@ -8,19 +8,17 @@ export async function middleware(request: NextRequest) {
         const url = request.nextUrl;
         const pathname = url.origin + "/getUrl";
         const orig_url: string = url.searchParams.get("v") || "";
-        // const req = await fetch(url.origin + "/getUrl", {
-        //     method: "POST",
-        //     body: JSON.stringify({ url: url.searchParams.get("v") })
-        // })
-        // const res = await req.json();
-        const res = await getUrl(pathname, orig_url);
-        let data;
-        if (res.status == 200)
-            data = res.slug;
-        else
-            data = res.message;
 
-        return NextResponse.redirect(new URL(`/?short_url=${data}`, request.url));
+        console.log(pathname);
+        return NextResponse.redirect("/");
+        // const res = await getUrl(pathname, orig_url);
+        // let data;
+        // if (res.status == 200)
+        //     data = res.slug;
+        // else
+        //     data = res.message;
+
+        // return NextResponse.redirect(new URL(`/?short_url=${data}`, request.url));
 
     }
 
