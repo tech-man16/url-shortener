@@ -15,7 +15,7 @@ const ExpiredPage = () => {
     }, [])
 
     return (
-        <div className='flex flex-col justify-center items-center h-screen'>
+        <div className='flex flex-col justify-center items-center h-screen text-black font-extrabold text-3xl'>
             <span> Url Expired </span>
             <span> The page will be redirected after 5 seconds </span>
         </div>
