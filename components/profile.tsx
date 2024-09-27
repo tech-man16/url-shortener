@@ -3,7 +3,7 @@ import React from "react";
 
 import profile from "@/images/profile.jpg";
 import profile2 from "@/images/profile.jpg";
-
+import Image from "next/image";
 
 const Profile = (props: any) => {
 
@@ -41,9 +41,10 @@ const Profile = (props: any) => {
             <div className={`flex max-[640px]:justify-center max-[640px]:items-center max-[640px]:flex-1 ${props.name ? "order-3" : "order-1"}`}>
                 <span className={`flex flex-initial p-2 w-[150px] h-[150px] my-auto border-4 rounded-full justify-center items-center  sm:order-3 
             sm:absolute sm:h-[150px] sm:w-[150px] sm:top-[10%] sm:left-0 sm:right-0 sm:mx-auto sm:my-0 sm:border-8 bg-white sm:rounded-full hover:border-green-400`}>
-                    <img
+                    <Image
                         src={props.name ? profile2.src : profile.src}
                         className="flex rounded-full h-full w-full sm:h-full sm:w-full"
+                        alt="Developer's side"
                     />
                 </span>
             </div>
