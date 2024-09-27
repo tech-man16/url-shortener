@@ -45,6 +45,8 @@ const Profile = (props: any) => {
                         src={props.name ? profile2.src : profile.src}
                         className="flex rounded-full h-full w-full sm:h-full sm:w-full"
                         alt="Developer's side"
+                        width={100}
+                        height={100}
                     />
                 </span>
             </div>
