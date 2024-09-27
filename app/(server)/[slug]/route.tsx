@@ -3,6 +3,10 @@ import { connect } from "../db/connection";
 
 import { NextRequest, NextResponse } from "next/server";
 
+export function generateStaticParams() { // Only for deployment it is used..Rather than no use of this
+    return [{ slug: '1' }];
+}
+
 export async function GET(
     request: NextRequest,
     { params }: { params: { slug: string } }
@@ -11,7 +15,7 @@ export async function GET(
         const db = await connect();
         const collection = await db.collection("urls");
         const dummyUrl: string = params.slug || "";
-        
+
         const data = await collection.findOne({ short_url: dummyUrl });
 
         if (data != undefined)
