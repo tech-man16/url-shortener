@@ -9,16 +9,14 @@ export async function middleware(request: NextRequest) {
         const pathname = url.origin + "/getUrl";
         const orig_url: string = url.searchParams.get("v") || "";
 
-        console.log(pathname);
-        return NextResponse.redirect("/");
-        // const res = await getUrl(pathname, orig_url);
-        // let data;
-        // if (res.status == 200)
-        //     data = res.slug;
-        // else
-        //     data = res.message;
+        const res = await getUrl(pathname, orig_url);
+        let data;
+        if (res.status == 200)
+            data = res.slug;
+        else
+            data = res.message;
 
-        // return NextResponse.redirect(new URL(`/?short_url=${data}`, request.url));
+        return NextResponse.redirect(new URL(`/?short_url=${data}`, request.url));
 
     }
 

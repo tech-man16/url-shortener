@@ -2,7 +2,11 @@
 
 import { connect } from "../db/connection";
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+
+export async function GET(req: NextRequest, res: NextResponse) {
+    return NextResponse.redirect("/");
+}
 
 export async function POST(req: Request, res: any) {
     try {
