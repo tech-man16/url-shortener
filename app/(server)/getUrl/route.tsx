@@ -24,8 +24,11 @@ export async function POST(req: Request, res: any) {
         try {
             console.log("try");
             console.log(86400);
-            await collection.createIndex({ createdAt: 1 }, { expireAfterSeconds: 86400 }); // After 1 day
-        } catch (e) { console.log("catch from route") }
+            await collection.createIndex({ "createdAt": 1 }, { expireAfterSeconds: 86400 }); // After 1 day
+        } catch (e) {
+            console.log("catch from route")
+            console.log(e);
+        }
 
         await collection.insertOne({
             orig_url: orig_url,
