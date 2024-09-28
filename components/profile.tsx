@@ -54,16 +54,6 @@ const Profile = (props: any) => {
                     </span>
                 </div>
             </main >
-
-            {
-                <Image
-                    src={props.name ? profile2.src : profile.src}
-                    className="absolute -top-48 flex rounded-full left-[33%] "
-                    alt="Developer's side"
-                    width={500}
-                    height={500}
-                />
-            }
         </div>
     )
 }
