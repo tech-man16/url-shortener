@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getUrl } from "@/app/(server)/server";
 
+
+
 export async function middleware(request: NextRequest) {
     try {
         if (request.nextUrl.pathname.startsWith("/a")) {
@@ -23,7 +25,7 @@ export async function middleware(request: NextRequest) {
             return NextResponse.redirect(new URL("/", request.url));
         }
     } catch (e) {
-        return NextResponse.redirect(new URL("/"));
+        return NextResponse.redirect(new URL("/", request.url));
     }
     //return NextResponse.redirect(new URL(`/getUrl?v=${request.url}`));
 }
