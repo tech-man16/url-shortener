@@ -27,7 +27,7 @@ export async function middleware(request: NextRequest) {
     } catch (e) {
         console.log("catch")
         console.log(new URL("/", request.url));
-        return NextResponse.json({ message: new URL("/", request.url) }, { status: 500 });
+        return NextResponse.json({ message: new URL("/", request.url), err: e }, { status: 500 });
     }
     //return NextResponse.redirect(new URL(`/getUrl?v=${request.url}`));
 }
