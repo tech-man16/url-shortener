@@ -12,7 +12,7 @@ const ExpiredPage = () => {
             console.log("Executed!!")
             router.push("/");
         }, 5000);
-    }, [])
+    }, [router]);
 
     return (
         <div className='flex flex-col justify-center items-center h-screen text-black font-extrabold text-3xl'>
