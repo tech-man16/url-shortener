@@ -22,9 +22,10 @@ export async function POST(req: Request, res: any) {
         const tomorrow = new Date(date.getTime() + (24 * 60 * 60 * 1000));
         //
         try {
-            console.log("try")
+            console.log("try");
+            console.log(86400);
             await collection.createIndex({ createdAt: 1 }, { expireAfterSeconds: 86400 }); // After 1 day
-        } catch (e) { /* console.log("catch")*/ }
+        } catch (e) { console.log("catch from route") }
 
         await collection.insertOne({
             orig_url: orig_url,
