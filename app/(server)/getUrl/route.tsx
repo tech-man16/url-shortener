@@ -12,7 +12,7 @@ export async function POST(req: Request, res: any) {
     try {
         const body = await req.json()
         const orig_url = body.url;
-        const short_url = Math.random().toString(36).slice(8);
+        const short_url = "a" + Math.random().toString(36).slice(8);
 
         const db = await connect();
         const collection = await db.collection("urls");
@@ -22,14 +22,15 @@ export async function POST(req: Request, res: any) {
         const tomorrow = new Date(date.getTime() + (24 * 60 * 60 * 1000));
         //
         try {
-            // console.log("try")
-            await collection.createIndex({ createdAt: 1 }, { expireAfterSeconds: 24 * 60 * 60 });
+            console.log("try")
+            await collection.createIndex({ createdAt: 1 }, { expireAfterSeconds: 86400 }); // After 1 day
         } catch (e) { /* console.log("catch")*/ }
+
         await collection.insertOne({
             orig_url: orig_url,
             short_url: short_url,
             createdAt: date,
-            expireAt: tomorrow.toLocaleDateString() + ", ",
+            expireAt: tomorrow.toLocaleDateString() + ", " + new Date(date.getTime()).toLocaleTimeString(),
             time: presentDate
 
         })

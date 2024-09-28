@@ -24,7 +24,7 @@ export default function Home() {
     setDummyUrl("");
     router.push("/");
     setDisabled(false);
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     const s = query.get("short_url") || "";
