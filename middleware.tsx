@@ -15,7 +15,6 @@ export async function middleware(request: NextRequest) {
                 data = res.slug;
             else
                 data = res.message;
-
             return NextResponse.redirect(new URL(`/?short_url=${data}`, request.url));
         }
 

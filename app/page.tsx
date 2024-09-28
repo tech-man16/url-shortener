@@ -83,11 +83,11 @@ export default function Home() {
     <Suspense>
       <div className="flex flex-col h-screen">
         <nav className="flex">
-          <button className={"text-2xl p-10 bg-gradient-to-r from-white to-orange-500 inline-block text-transparent bg-clip-text drop-shadow-2xl"} onClick={() => { setDummyUrl(""), window.location.reload() }}> URL Shortener Tool </button>
+          <button className={"text-2xl p-10 bg-gradient-to-r from-white to-orange-500 inline-block text-transparent bg-clip-text drop-shadow-2xl font-extrabold"} onClick={() => { setDummyUrl(""), window.location.reload() }}> URL Shortener Tool </button>
         </nav>
         <div className="flex justify-around max-sm:flex-col-reverse max-sm:gap-8 min-[1000px]:h-1/3 min-[1000px]:min-h-[200px]">
           <div className="flex flex-col justify-center items-center gap-4 flex-1">
-            <div className="flex justify-center items-center gap-2 flex-col lg:flex-row">
+            <div className="flex justify-center items-center gap-2 flex-col lg:flex-row p-2.5">
               <input type="text" value={url} id="url" name="url"
                 aria-label="Enter Url"
                 placeholder="Enter Url..."
@@ -119,7 +119,7 @@ export default function Home() {
                     </a >
                     <button className="w-32 h-12 relative inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 via-blue-400 to-pink-500 hover:from-purple-500/85 hover:via-blue-400/85 hover:to-pink-500/85 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800" onClick={copyToClipboard}>  Copy  </button>
                   </div>
-                  <span className="mt-4 bg-gradient-to-br from-black via-blue-500 to-purple-900 flex flex-row-reverse text-transparent bg-clip-text text-sm font-extrabold"> Valid for 10 seconds </span>
+                  <span className="mt-4 bg-gradient-to-br from-black via-blue-500 to-purple-900 flex flex-row-reverse text-transparent bg-clip-text text-sm font-extrabold"> Valid for 24 hours </span>
                 </div> :
                 <span> {dummyUrl} </span>
             }
@@ -129,7 +129,7 @@ export default function Home() {
               className="text-xl flex w-full pl-10 bg-gradient-to-r from-white via-yellow-800 to-black  font-extrabold sm:from-black sm:via-green-900 sm:to-blue-500 text-transparent bg-clip-text sm:text-2xl sm:pl-0  ">
               Accepted Urls:
             </p>
-            <div className="flex gap-2 w-full pl-20 max-[640px]:flex-row max-[640px]:pl-20 text-base">
+            <div className="flex flex-row-reverse gap-2 w-full pl-20 max-[640px]:flex-row max-[640px]:pl-20 text-base">
               <div className="flex flex-col bg-gradient-to-r from-black via-purple-600 to-black text-transparent bg-clip-text text-lg">
                 <span className="flex py-1"> www.example.com </span>
                 <span className="flex" >https://www.example.com   </span>
@@ -152,7 +152,9 @@ export default function Home() {
         </div>
         <div className="flex flex-col justify-center items-center sm:min-h-[352px] h-2/3">
           <Profile name={0} />
-          <div className="flex flex-1 w-full justify-center items-center bg-gradient-to-r from-blue-500 to-green-600"> Developed by #MM &nbsp; <span className="bg-gradient-to-br from-pink-400 via-green-100 to-yellow-200 text-transparent bg-clip-text"> &copy;MM </span> </div>
+          <div className="flex flex-1 w-full justify-center items-center text-black font-semibold text-xl"> Developed by #MM &nbsp;
+            <span className="bg-gradient-to-tr from-red-800 via-green-900 to-emerald-500 text-transparent bg-clip-text"> &copy;MM </span>
+          </div>
         </div>
       </div >
     </Suspense >

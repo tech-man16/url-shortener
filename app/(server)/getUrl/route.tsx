@@ -18,18 +18,19 @@ export async function POST(req: Request, res: any) {
         const collection = await db.collection("urls");
 
         const date = new Date();
+        const presentDate = new Date(date.getTime()).toLocaleDateString() + ", " + new Date(date.getTime()).toLocaleTimeString()
+        const tomorrow = new Date(date.getTime() + (24 * 60 * 60 * 1000));
         //
         try {
             // console.log("try")
-            await collection.createIndex({ createdAt: 1 }, { expireAfterSeconds: 10 });
+            await collection.createIndex({ createdAt: 1 }, { expireAfterSeconds: 24 * 60 * 60 });
         } catch (e) { /* console.log("catch")*/ }
         await collection.insertOne({
             orig_url: orig_url,
             short_url: short_url,
             createdAt: date,
-            expireAt: Date.now(),
-            time:
-                `${date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()} ,${date.getHours() + ":" + date.getMinutes()}:${date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()}`
+            expireAt: tomorrow.toLocaleDateString() + ", ",
+            time: presentDate
 
         })
         return NextResponse.json({ slug: short_url, status: 200 }, { status: 200 });
