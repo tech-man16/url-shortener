@@ -18,7 +18,8 @@ export async function POST(req: Request, res: any) {
         const collection = await db.collection("urls");
 
         const date = new Date();
-        const presentDate = new Date(date.getTime()).toLocaleDateString() + ", " + new Date(date.getTime()).toLocaleTimeString()
+        console.log(new Date(date.getTime()).toLocaleTimeString());
+        const presentDate = new Date(date.getTime()).toLocaleDateString() + ", " + date.toLocaleTimeString()
         const tomorrow = new Date(date.getTime() + (24 * 60 * 60 * 1000));
         //
         try {
