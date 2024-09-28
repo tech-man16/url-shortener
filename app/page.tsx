@@ -126,7 +126,7 @@ export default function Home() {
           </div >
           <div className="flex flex-col mr-16 gap-2 justify-center items-center">
             <p
-              className="text-xl flex w-full pl-4 bg-gradient-to-r from-white via-yellow-800 to-black  font-extrabold sm:from-black sm:via-green-900 sm:to-blue-500 text-transparent bg-clip-text sm:text-2xl sm:pl-0  ">
+              className="text-xl flex w-full pl-10 bg-gradient-to-r from-white via-yellow-800 to-black  font-extrabold sm:from-black sm:via-green-900 sm:to-blue-500 text-transparent bg-clip-text sm:text-2xl sm:pl-0  ">
               Accepted Urls:
             </p>
             <div className="flex gap-2 w-full pl-20 max-[640px]:flex-row max-[640px]:pl-20 text-base">
