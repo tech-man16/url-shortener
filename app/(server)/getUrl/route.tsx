@@ -18,11 +18,17 @@ export async function POST(req: Request, res: any) {
         const collection = await db.collection("urls");
 
         const date = new Date();
-        // console.log(new Date(date.getTime()).toLocaleTimeString('en-IN'));
-        const indianTimezone = 'Asia/Kolkata';
-        const formattedTime = new Intl.DateTimeFormat('en-IN', { timeZone: indianTimezone }).format(date);
-        console.log(formattedTime);
-        const presentDate = new Date(date.getTime()).toLocaleDateString() + ", " + date.toLocaleTimeString('en-IN');
+        const options: any = {
+            year: "numeric",
+            month: "numeric",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            hour12: true,
+            timeZone: 'Asia/Kolkata',
+        };
+        const presentDate = new Intl.DateTimeFormat('en-IN', options).format(date);
         const tomorrow = new Date(date.getTime() + (24 * 60 * 60 * 1000));
         //
         try {
