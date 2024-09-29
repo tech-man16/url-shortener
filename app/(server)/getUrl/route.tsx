@@ -28,21 +28,16 @@ export async function POST(req: Request, res: any) {
             hour12: true,
             timeZone: 'Asia/Kolkata',
         };
+
         const presentDate = new Intl.DateTimeFormat('en-IN', options).format(date);
         const tomorrow = new Date(date.getTime() + (24 * 60 * 60 * 1000));
         const nextDate = new Intl.DateTimeFormat('en-IN', options).format(tomorrow);
-        console.log(nextDate);
-        //
+
         try {
-            console.log("try");
-            console.log(86400);
             await collection.createIndex({ "createdAt": 1 }, { expireAfterSeconds: 86400 }); // After 1 day
         } catch (e) {
-            console.log("catch from route");
-            console.log(e);
             await collection.dropIndex("createdAt_1");
             await collection.createIndex({ "createdAt": 1 }, { expireAfterSeconds: 86400 });
-            console.log("error removed !!");
         }
 
         await collection.insertOne({
@@ -51,7 +46,6 @@ export async function POST(req: Request, res: any) {
             createdAt: date,
             expireAt: nextDate,
             time: presentDate
-
         })
         return NextResponse.json({ slug: short_url, status: 200 }, { status: 200 });
     } catch (e) {
