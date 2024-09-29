@@ -30,6 +30,8 @@ export async function POST(req: Request, res: any) {
         };
         const presentDate = new Intl.DateTimeFormat('en-IN', options).format(date);
         const tomorrow = new Date(date.getTime() + (24 * 60 * 60 * 1000));
+        const nextDate = new Intl.DateTimeFormat('en-IN', options).format(tomorrow);
+        console.log(nextDate);
         //
         try {
             console.log("try");
@@ -47,7 +49,7 @@ export async function POST(req: Request, res: any) {
             orig_url: orig_url,
             short_url: short_url,
             createdAt: date,
-            expireAt: tomorrow.toLocaleDateString() + ", " + new Date(date.getTime()).toLocaleTimeString(),
+            expireAt: nextDate,
             time: presentDate
 
         })
