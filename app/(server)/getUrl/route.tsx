@@ -19,7 +19,7 @@ export async function POST(req: Request, res: any) {
 
         const date = new Date();
         console.log(new Date(date.getTime()).toLocaleTimeString());
-        const presentDate = new Date(date.getTime()).toLocaleDateString() + ", " + date.toLocaleTimeString()
+        const presentDate = new Date(date.getTime()).toLocaleDateString() + ", " + date.toLocaleTimeString('en-IN');
         const tomorrow = new Date(date.getTime() + (24 * 60 * 60 * 1000));
         //
         try {
