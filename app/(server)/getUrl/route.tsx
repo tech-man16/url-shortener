@@ -12,7 +12,7 @@ export async function POST(req: Request, res: any) {
     try {
         const body = await req.json()
         const orig_url = body.url;
-        const short_url = "a" + Math.random().toString(36).slice(8);
+        const short_url = Math.random().toString(36).slice(8);
 
         const db = await connect();
         const collection = await db.collection("urls");
